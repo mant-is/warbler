@@ -9,4 +9,11 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    - if flash[:notice]
+      %div.notification.is-primary.global-notifications
+        %p&= notice.danger
+
+    - if flash[:alert]
+      %div.notification.is-danger.global-notifications
+        %p&= notice.danger  
     = yield
