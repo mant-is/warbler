@@ -3,7 +3,8 @@ class PeepsController < ApplicationController
 
   # GET /peeps or /peeps.json
   def index
-    @peeps = Peep.all
+    @peeps = Peep.all.order("created_at DESC")
+    @peep = Peep.new
   end
 
   # GET /peeps/1 or /peeps/1.json

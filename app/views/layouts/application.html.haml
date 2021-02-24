@@ -7,13 +7,36 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/961950bb15.js"}
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'  
   %body
-    - if flash[:notice]
-      %div.notification.is-primary.global-notifications
-        %p&= notice.danger
 
-    - if flash[:alert]
-      %div.notification.is-danger.global-notifications
-        %p&= notice.danger  
-    = yield
+
+
+    - if notice
+      .notification.is-warning
+        %p.notice&= notice
+    - if alert
+      .notification.is-danger
+        %p.alert&= alert  
+
+    %nav.navbar.is-info
+      .navbar-brand
+        %h1.title.is-5
+          = link_to 'Warbler', root_path
+        %a.navbar-burger.burger{ "data-target": "navbarExample", role: "button" }
+          %span
+          %span
+          %span
+      .navbar-menu#navbarExample
+        .navbar-start
+        .navbar-end
+          %a.navbar-item{href: '/'}
+            Home
+          %a.navbar-item
+            Away
+          .field.is-grouped 
+            %p.control
+              = link_to 'New Peep', new_peep_path, class: "button is-info is-inverted"
+
+  = yield
