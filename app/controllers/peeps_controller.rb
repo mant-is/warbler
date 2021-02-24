@@ -23,10 +23,10 @@ class PeepsController < ApplicationController
   # POST /peeps or /peeps.json
   def create
     @peep = Peep.new(peep_params)
-
+    
     respond_to do |format|
       if @peep.save
-        format.html { redirect_to @peep, notice: "Peep was successfully created." }
+        format.html { redirect_to :root, notice: "Peep was successfully created." }
         format.json { render :show, status: :created, location: @peep }
       else
         format.html { render :new, status: :unprocessable_entity }
