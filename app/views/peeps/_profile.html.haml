@@ -1,0 +1,27 @@
+.column.is-one-quarter
+  %nav.panel
+    %p.panel-heading Profile
+    .panel-block
+      %article.media
+        .media-left 
+          %figure.image.is-64x64
+            %img{ src: "https://bulma.io/images/placeholders/64x64.png" }
+        .media-content
+          .content
+            %p
+              %strong&= current_user.name
+              %small&= current_user.username
+    .panel-block
+      .level.is-mobile
+        .level-item.has-centered-text
+          %div
+            %p.heading Peeps
+            %p.title.is-6&= current_user.peeps.count
+        .level-item.has-centered-text
+          %div
+            %p.heading Following
+            %p.title.is-6 0
+        .level-item.has-centered-text
+          %div
+            %p.heading Followers
+            %p.title.is-6 735.6K

@@ -16,8 +16,12 @@
 
  @import "bulma";
 
-.nav-brand .title {
-  color: white
+.navbar {
+  padding-top: .68em;
+}
+
+.navbar-brand .title .a {
+  color: white;
 }
 
 .image {

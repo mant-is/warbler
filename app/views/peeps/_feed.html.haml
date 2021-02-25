@@ -1,11 +1,12 @@
 .column.is-half
-  %article.media.box
-    %figure.media-left
-      %p.image.is-64x64
-        %img{src: "https://bulma.io/images/placeholders/64x64.png"}
-    .media-content
-      .title.is-5&= "@#{current_user.username}"
-      = render 'form'
+  - if user_signed_in?
+    %article.media.box
+      %figure.media-left
+        %p.image.is-64x64
+          %img{src: "https://bulma.io/images/placeholders/64x64.png"}
+      .media-content
+        .title.is-5&= "@#{current_user.username if current_user}"
+        = render 'form'
   - @peeps.each do |peep|
     .box
       %article.media
@@ -15,19 +16,20 @@
         .media-content
           .content
             %strong
-              = current_user.name
+              = peep.user.name
             %small
-              = "@#{current_user.username}"
+              = peep.user.username
             %p
               = peep.chirp
-          %nav.level
-            .level-left.is-mobile
-              = link_to peep, class: "level-item" do
-                %span.icon
-                  %i.fa.fa-link
-              = link_to edit_peep_path(peep), class: "level-item" do
-                %span.icon
-                  %i.fa.fa-pencil
-              = link_to peep, method: :delete, data: { confirm: "Delete this peep?" } do
-                %span.icon
-                  %i.fa.fa-trash-o
+          - if user_signed_in?
+            %nav.level
+              .level-left.is-mobile
+                = link_to peep, class: "level-item" do
+                  %span.icon
+                    %i.fa.fa-link
+                = link_to edit_peep_path(peep), class: "level-item" do
+                  %span.icon
+                    %i.fa.fa-pencil
+                = link_to peep, method: :delete, data: { confirm: "Delete this peep?" } do
+                  %span.icon
+                    %i.fa.fa-trash-o

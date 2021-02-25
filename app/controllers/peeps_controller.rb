@@ -19,36 +19,24 @@ class PeepsController < ApplicationController
 
   def create
     @peep = current_user.peeps.build(peep_params)
-    
-    respond_to do |format|
-      if @peep.save
-        format.html { redirect_to :root, notice: "Peep was successfully created." }
-        format.json { render :show, status: :created, location: @peep }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @peep.errors, status: :unprocessable_entity }
-      end
+    if @peep.save
+      redirect_to :root, notice: "Peep was successfully created." 
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @peep.update(peep_params)
-        format.html { redirect_to @peep, notice: "Peep was successfully updated." }
-        format.json { render :show, status: :ok, location: @peep }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @peep.errors, status: :unprocessable_entity }
-      end
+    if @peep.update(peep_params)
+      redirect_to @peep, notice: "Peep was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @peep.destroy
-    respond_to do |format|
-      format.html { redirect_to peeps_url, notice: "Peep was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to peeps_url, notice: "Peep was successfully destroyed."
   end
 
   private

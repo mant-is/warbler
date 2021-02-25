@@ -16,20 +16,20 @@
                   input_html: { class: "input" },
                   wrapper: false,
                   label_html: { class: "label" } 
-            .field
-              .control
-                = f.input :name,                                                                    
-                  required: true,                       
-                  input_html: { class: "input" },
-                  wrapper: false,
-                  label_html: { class: "label" } 
-            .field
-              .control
-                = f.input :username,                                                                    
-                  required: true,                       
-                  input_html: { class: "input" },
-                  wrapper: false,
-                  label_html: { class: "label" } 
+            -# .field
+            -#   .control
+            -#     = f.input :name,                                                                    
+            -#       required: true,                       
+            -#       input_html: { class: "input" },
+            -#       wrapper: false,
+            -#       label_html: { class: "label" } 
+            -# .field
+            -#   .control
+            -#     = f.input :username,                                                                    
+            -#       required: true,                       
+            -#       input_html: { class: "input" },
+            -#       wrapper: false,
+            -#       label_html: { class: "label" } 
             .field
               .control
                 = f.input :password,                                                                    
@@ -40,14 +40,18 @@
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
             .field
               .control
-                = f.input :password_confirmation,            
-                  required: true,                       
-                  input_html: { class: "input" },
+                = f.input :remember_me,
                   wrapper: false,
-                  label_html: { class: "label" }        
+                  as: :boolean if devise_mapping.rememberable?
+            -# .field
+            -#   .control
+            -#     = f.input :password_confirmation,            
+            -#       required: true,                       
+            -#       input_html: { class: "input" },
+            -#       wrapper: false,
+            -#       label_html: { class: "label" }        
           .form-actions
             .field
               .control
-              %br
-                = f.button :submit, "Sign up", class: "button is-info is-medium"
+                %br
                 = render "devise/shared/links"

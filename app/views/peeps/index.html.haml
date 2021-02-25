@@ -1,6 +1,9 @@
 %section.section
   .container
     .columns
-      = render 'trends'
+      - if user_signed_in?
+        = render 'profile'
+      - else
+        = render 'trends'
       = render 'feed'
       = render 'who-to-follow'
