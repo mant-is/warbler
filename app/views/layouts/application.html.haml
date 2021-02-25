@@ -10,16 +10,12 @@
     %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/961950bb15.js"}
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'  
   %body
-
-
-
     - if notice
       .notification.is-success
         %p.notice&= notice
     - if alert
       .notification.is-danger
         %p.alert&= alert  
-
     %nav.navbar.is-info
       .navbar-brand
         %h1.title.is-5

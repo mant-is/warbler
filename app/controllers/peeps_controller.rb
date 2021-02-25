@@ -1,5 +1,6 @@
 class PeepsController < ApplicationController
   before_action :set_peep, only: %i[ show edit update destroy ]
+  before_action :authentice_user!, except: [:index, :show]
 
   # GET /peeps or /peeps.json
   def index
