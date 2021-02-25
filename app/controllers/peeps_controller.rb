@@ -1,6 +1,6 @@
 class PeepsController < ApplicationController
   before_action :set_peep, only: %i[ show edit update destroy ]
-  before_action :authentice_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @peeps = Peep.all.order("created_at DESC")
@@ -11,14 +11,14 @@ class PeepsController < ApplicationController
   end
 
   def new
-    @peep = current_user.peep.build
+    @peep = current_user.peeps.build
   end
 
   def edit
   end
 
   def create
-    @peep = Peep.new(peep_params)
+    @peep = current_user.peeps.build(peep_params)
     
     respond_to do |format|
       if @peep.save

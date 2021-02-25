@@ -1,6 +1,6 @@
 = form_with model: @peep do |form|
   .field
     .control
-      = form.label :chirp
+      -# = form.label :chirp
       = form.text_area :chirp, cols: 32, rows: 3, spellcheck: true
   = form.submit class: "button is-info"
