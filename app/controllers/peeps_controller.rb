@@ -2,26 +2,21 @@ class PeepsController < ApplicationController
   before_action :set_peep, only: %i[ show edit update destroy ]
   before_action :authentice_user!, except: [:index, :show]
 
-  # GET /peeps or /peeps.json
   def index
     @peeps = Peep.all.order("created_at DESC")
     @peep = Peep.new
   end
 
-  # GET /peeps/1 or /peeps/1.json
   def show
   end
 
-  # GET /peeps/new
   def new
-    @peep = Peep.new
+    @peep = current_user.peep.build
   end
 
-  # GET /peeps/1/edit
   def edit
   end
 
-  # POST /peeps or /peeps.json
   def create
     @peep = Peep.new(peep_params)
     
@@ -36,7 +31,6 @@ class PeepsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /peeps/1 or /peeps/1.json
   def update
     respond_to do |format|
       if @peep.update(peep_params)
@@ -49,7 +43,6 @@ class PeepsController < ApplicationController
     end
   end
 
-  # DELETE /peeps/1 or /peeps/1.json
   def destroy
     @peep.destroy
     respond_to do |format|
@@ -64,7 +57,6 @@ class PeepsController < ApplicationController
       @peep = Peep.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def peep_params
       params.require(:peep).permit(:chirp)
     end
