@@ -49,4 +49,5 @@
               .control
               %br
                 = f.button :submit, "Sign up", class: "button is-info is-medium"
-                = render "devise/shared/links"
+            = link_to "Log in", new_user_session_path, class: "button is-ghost"
+            -# = render "devise/shared/links"

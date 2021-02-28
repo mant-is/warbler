@@ -2,6 +2,8 @@
   = form_with model: @peep do |form|
     .field
       .control
-        = form.label :chirp
-        = form.text_area :chirp, cols: 32, rows: 3, spellcheck: true
+        = form.text_area :chirp, cols: 40, rows: 3, placeholder: "Create new peep", spellcheck: true, class: "textarea has-fixed-size", autofocus: true
     = form.submit class: "button is-info"
+- else
+  .control
+    %textarea.textarea.has-fixed-size{cols: 40, rows: 3, placeholder: "Sign in to create new peep", disabled: true}
