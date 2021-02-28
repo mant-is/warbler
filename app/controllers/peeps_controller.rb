@@ -5,7 +5,6 @@ class PeepsController < ApplicationController
   def index
     @peeps = Peep.all.order("created_at DESC")
     @peep = Peep.new
-    # respond_with(@peeps)
   end
 
   def show
