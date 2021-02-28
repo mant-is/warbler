@@ -2,8 +2,8 @@
   %nav.panel
     %p.panel-heading
       Who to flock with
-      - 5.times do |i + 1|
-        - user = User.find(rand(20))
+      - 5.times do
+        - user = User.find(rand(1..20))
         .panel-block
           %article.media
             .media-left
