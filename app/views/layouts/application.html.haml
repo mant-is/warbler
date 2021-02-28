@@ -30,15 +30,15 @@
         %br
           .field.is-grouped 
             %p.control
-              = link_to 'New Peep', new_peep_path, class: "button is-info is-inverted"
-            - if user_signed_in?
-              %p.control
-                = link_to current_user.username, edit_user_registration_path, class: "button is-text is-ghost"
+              - if user_signed_in?
                 %p.control
-                = link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-text is-warning"
-            - else
-              %p.control
-                = link_to "Sign in", new_user_session_path, class: "button is-info"
-                = link_to "Sign up", new_user_registration_path, class: "button is-info"
+                  = link_to 'New Peep', new_peep_path, class: "button is-info is-inverted"
+                  = link_to current_user.username, edit_user_registration_path, class: "button is-text is-ghost"
+                  %p.control
+                  = link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-text is-warning"
+              - else
+                %p.control
+                  = link_to "Sign in", new_user_session_path, class: "button is-info"
+                  = link_to "Sign up", new_user_registration_path, class: "button is-info"
   = yield
   -# = render "devise/shared/links"
