@@ -10,6 +10,7 @@ gem 'rails', '~> 6.1.3'
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -48,7 +49,6 @@ group :development do
   # gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'guard', '~> 2.16', '>= 2.16.2' 
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false
-  gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 end
 
 group :test do

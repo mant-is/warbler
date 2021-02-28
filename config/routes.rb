@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-  devise_for :users, controllers: { registrations: 'registrations' }
-  
-  root 'peeps#index'
-
+  root "peeps#index"
   resources :peeps
-
+  devise_for :users, controllers: { registrations: 'registrations' }
 end
